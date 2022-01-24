@@ -3,7 +3,6 @@ package rs.raf.nwpDom3.security;
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import rs.raf.nwpDom3.entities.Permission;
 import rs.raf.nwpDom3.entities.User;
 import rs.raf.nwpDom3.forms.LogInForm;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -82,6 +81,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				.withClaim("can_read_users", user.isCan_read_users())
 				.withClaim("can_update_users", user.isCan_update_users())
 				.withClaim("can_delete_users", user.isCan_delete_users())
+				.withClaim("can_create_machines", user.isCan_create_machines())
+				.withClaim("can_destroy_machines", user.isCan_destroy_machines())
+				.withClaim("can_search_machines", user.isCan_search_machines())
+				.withClaim("can_start_machines", user.isCan_start_machines())
+				.withClaim("can_stop_machines", user.isCan_stop_machines())
+				.withClaim("can_restart_machines", user.isCan_restart_machines())
 				.withExpiresAt(Date.from(expiration))
 				.sign(HMAC512(SECRET.getBytes()));
 

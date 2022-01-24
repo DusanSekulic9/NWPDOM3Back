@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -31,4 +32,13 @@ public class User {
     private boolean can_create_users = false;
     private boolean can_delete_users = false;
     private boolean can_update_users = false;
+    private boolean can_search_machines = false;
+    private boolean can_start_machines = false;
+    private boolean can_stop_machines = false;
+    private boolean can_restart_machines = false;
+    private boolean can_create_machines = false;
+    private boolean can_destroy_machines = false;
+
+    @OneToMany(mappedBy="createdBy")
+    private transient List<Machine> machines;
 }
